@@ -1,0 +1,22 @@
+#                                                                        #
+# Security policy for the TYPO3.Setup package                            #
+#                                                                        #
+
+resources:
+  methods:
+    TYPO3_Setup_LoginController: 'method(TYPO3\Setup\Controller\LoginController->(login|authenticate)Action())'
+    TYPO3_Setup_SetupController: 'method(TYPO3\Setup\Controller\SetupController->indexAction()) || method(TYPO3\Setup\Controller\LoginController->logoutAction())'
+    TYPO3_Setup_WidgetControllers: 'method(public TYPO3\Setup\ViewHelpers\Widget\Controller\.+Controller->.+Action())'
+
+roles:
+  Administrator: []
+
+acls:
+  Everybody:
+    methods:
+      TYPO3_Setup_LoginController: GRANT
+
+  Administrator:
+    methods:
+      TYPO3_Setup_SetupController: GRANT
+      TYPO3_Setup_WidgetControllers: GRANT
