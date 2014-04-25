@@ -1,0 +1,82 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Index view of AssetController</f:section>
+
+<f:section name="Options">
+	<div class="neos-file-options">
+		<span class="count">{assets -> f:count()} items</span>
+		<f:link.action action="new"><i class="icon-upload"></i> Upload</f:link.action>
+	</div>
+	<div class="neos-view-options">
+		<f:link.action action="index" title="Thumbnail view" class="{f:if(condition: '{view} == \'Thumbnail\'', then: ' neos-active')}" arguments="{view: 'Thumbnail', tag: activeTag}" addQueryString="TRUE"><i class="icon-th"></i></f:link.action>
+		<f:link.action action="index" title="List view" class="{f:if(condition: '{view} == \'List\'', then: ' neos-active')}" arguments="{view: 'List', tag: activeTag}" addQueryString="TRUE"><i class="icon-th-list"></i></f:link.action>
+	</div>
+</f:section>
+
+<f:section name="Sidebar">
+	<h2>
+		Tags
+		<span id="neos-tags-list-edit-toggle" class="neos-button"><i class="icon-pencil"></i></span>
+	</h2>
+	<ul class="neos-tags-list">
+		<li>
+		<li>
+			<f:link.action action="index" title="All assets" class="{f:if(condition: '{tagMode} == 1', then: 'neos-active')}" arguments="{view: view, tagMode: 1}">
+				All
+				<span class="count">{allCount}</span>
+			</f:link.action>
+		</li>
+		<li>
+			<f:link.action action="index" title="Untagged assets" class="{f:if(condition: '{tagMode} == 2', then: 'neos-active')}" arguments="{view: view, tagMode: 2}">
+				Untagged
+				<span class="count">{untaggedCount}</span>
+			</f:link.action>
+		</li>
+		<f:for each="{tags}" as="tag">
+			<li>
+				<f:link.action action="index" title="{tag.tag.label}" class="droppable-tag{f:if(condition: '{tag.tag} == {activeTag}', then: ' neos-active')}" arguments="{tag: tag.tag}" additionalAttributes="{data-tag-identifier: '{tag.tag -> f:format.identifier()}'}">
+					{tag.tag.label}
+					<span class="count">{tag.count}</span>
+				</f:link.action>
+				<f:form action="deleteTag" arguments="{tag: tag.tag}"><button type="submit"><i class="icon-trash"></i></button></f:form>
+			</li>
+		</f:for>
+	</ul>
+	<br /><br />
+	<f:form action="createTag">
+		<f:form.textfield name="label" placeholder="Enter tag label" /><br /><br />
+		<f:form.submit value="Create tag" class="neos-button" />
+	</f:form>
+
+	<div id="uploader">
+		<div id="filelist"></div>
+	</div>
+</f:section>
+
+<f:section name="Content">
+	<div id="dropzone" class="neos-upload-area">
+		<span>Drop files here</span>
+		<f:form method="post" action="create" object="{asset}" objectName="asset" enctype="multipart/form-data">
+			<f:form.upload id="resource" property="resource" additionalAttributes="{required: 'required'}" />
+		</f:form>
+	</div>
+	<f:if condition="{assets}">
+		<f:then>
+			<f:render partial="{view}View" arguments="{assets: assets}" />
+		</f:then>
+		<f:else>
+			<p>No Assets found. You can drag files here to upload them.</p>
+		</f:else>
+	</f:if>
+	<script type="text/javascript">
+		var uploadUrl = '<f:uri.action action="upload" additionalParams="{__csrfToken: \"{f:security.csrfToken()}\"}" absolute="true" />';
+	</script>
+	<f:form action="tagAsset" id="tag-asset-form">
+		<f:form.hidden name="asset[__identity]" id="tag-asset-form-asset" />
+		<f:form.hidden name="tag[__identity]" id="tag-asset-form-tag" />
+	</f:form>
+	<script type="text/javascript" src="../../Public/Libraries/plupload/plupload.full.js"></script>
+	<script type="text/javascript" src="../../Public/Libraries/jquery-ui/js/jquery-ui-1.10.3.custom.js"></script>
+	<script type="text/javascript" src="../../Public/Scripts/upload.js"></script>
+	<script type="text/javascript" src="../../Public/Scripts/tagging.js"></script>
+</f:section>

@@ -1,0 +1,14 @@
+{
+    "name": "typo3/extjs",
+    "type": "typo3-flow-package",
+    "description": "The package contains ExtJS for use in TYPO3 Flow packages. It is a slightly trimmed version of ExtJS (missing source, build, examples, documentation) with JavaScript, images, CSS and Flash moved to distinct folders. In addition it contains the ux files found in the examples folder of the ExtJS distribution. Using Ext Direct is supported by an Ext Direct request handler and a viewhelper to build a provider configuration from controller actions.",
+    "license": "GPL-3.0",
+    "require": {
+        "typo3/flow": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "TYPO3\\ExtJS": "Classes"
+        }
+    }
+}

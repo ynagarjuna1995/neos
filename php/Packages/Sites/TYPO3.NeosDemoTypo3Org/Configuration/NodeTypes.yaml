@@ -1,0 +1,254 @@
+##
+# Adjust the "Page" node type:
+# Add two properties "layout" and "subpageLayout" to the default "Page" NodeType
+#
+'TYPO3.Neos.NodeTypes:Page':
+  childNodes:
+    'teaser':
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    'layout':
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              'default':
+                label: 'Default'
+              'landingPage':
+                label: 'Landing page'
+    'subpageLayout':
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              'default':
+                label: 'Default'
+              'landingPage':
+                label: 'Landing page'
+
+##
+# Adjust the "Headline" node type:
+# Enable 4th and 5th level and disable "p" in the aloha format selector of the "title" property
+#
+'TYPO3.Neos.NodeTypes:Headline':
+  properties:
+    'title':
+      ui:
+        aloha:
+          'format':
+            'p': FALSE
+            'h4': TRUE
+            'h5': TRUE
+
+##
+# Adjust the "TwoColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:TwoColumn':
+  properties:
+    'layout':
+      defaultValue: '6-6'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '50-50': ~
+              '75-25': ~
+              '25-75': ~
+              '66-33': ~
+              '33-66': ~
+              '6-6':
+                label: '50% / 50%'
+              '8-4':
+                label: '66% / 33%'
+              '4-8':
+                label: '33% / 66%'
+
+##
+# Adjust the "ThreeColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:ThreeColumn':
+  properties:
+    'layout':
+      defaultValue: '4-4-4'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '33-33-33': ~
+              '50-25-25': ~
+              '25-50-25': ~
+              '25-25-50': ~
+              '4-4-4':
+                label: '33% / 33% / 33%'
+              '6-3-3':
+                label: '50% / 25% / 33%'
+              '3-6-3':
+                label: '25% / 50% / 25%'
+              '3-3-6':
+                label: '25% / 25% / 50%'
+
+##
+# Adjust the "FourColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:FourColumn':
+  properties:
+    'layout':
+      defaultValue: '3-3-3-3'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '25-25-25-25': ~
+              '3-3-3-3':
+                label: '25% / 25% / 25% / 25%'
+
+##
+# Adjust the "Form" node type:
+# Remove the empty select option and register the "contact-form"-Form
+#
+'TYPO3.Neos.NodeTypes:Form':
+  properties:
+    'formIdentifier':
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '': ~
+              'contact-form':
+                label: 'Contact form'
+
+
+##
+# A new Document NodeType "Chapter"
+#
+'TYPO3.NeosDemoTypo3Org:Chapter':
+  superTypes: ['TYPO3.Neos:Document']
+  childNodes:
+    'main':
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Chapter'
+    icon: 'icon-book'
+    inspector:
+      groups:
+        'document':
+          label: 'Chapter details'
+  properties:
+    'layout':
+      type: string
+      defaultValue: 'chapter'
+    'chapterDescription':
+      type: string
+      ui:
+        label: 'Chapter description'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+    'chapterImage':
+      type: 'TYPO3\Media\Domain\Model\ImageVariant'
+      ui:
+        label: 'Chapter image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'document'
+
+##
+# A custom "Menu" NodeType for chapters
+#
+'TYPO3.NeosDemoTypo3Org:ChapterMenu':
+  superTypes: ['TYPO3.Neos.NodeTypes:Menu']
+  ui:
+    label: 'Chapter menu'
+
+##
+# A "Registration" plugin that allows creation of Neos user accounts through the Frontend
+# Warning: This is not to be used on productive Websites!
+#
+'TYPO3.NeosDemoTypo3Org:Registration':
+  superTypes: ['TYPO3.Neos:Plugin']
+  ui:
+    label: 'Editor Registration Plugin'
+    icon: 'icon-user'
+
+##
+# A simple "Flickr" plugin that demonstrates the "PluginViews"-feature
+#
+'TYPO3.NeosDemoTypo3Org:Flickr':
+  superTypes: ['TYPO3.Neos:Plugin']
+  ui:
+    label: 'Flickr photo feed'
+    icon: 'icon-rss'
+    inspector:
+      groups:
+        'feed':
+          label: 'Feed'
+  options:
+    'pluginViews':
+      'UserFeed':
+        label: 'User feed'
+        controllerActions:
+          'TYPO3\NeosDemoTypo3Org\Controller\FlickrController': ['userStream']
+  properties:
+    'tags':
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Tag(s) for the flickr feed'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'feed'
+
+##
+# A "Youtube" content element
+#
+'TYPO3.NeosDemoTypo3Org:YouTube':
+  superTypes: ['TYPO3.Neos:Content']
+  ui:
+    label: YouTube
+    icon: 'icon-youtube'
+    inspector:
+      groups:
+        'video':
+          label: Video
+  properties:
+    'video':
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Youtube video ID'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'video'
+    'width':
+      type: integer
+      defaultValue: 400
+      ui:
+        label: 'Width'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'video'
+    'height':
+      type: integer
+      defaultValue: 300
+      ui:
+        label: 'Height'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'video'
+
+##
+# A "Carousel" content element that renders "Image" child nodes into a JavaScript based slideshow
+#
+'TYPO3.NeosDemoTypo3Org:Carousel':
+  superTypes: ['TYPO3.Neos:Content']
+  childNodes:
+    carouselItems:
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Carousel'
+    group: 'plugins'
+    icon: 'icon-picture'
+    inlineEditable: TRUE

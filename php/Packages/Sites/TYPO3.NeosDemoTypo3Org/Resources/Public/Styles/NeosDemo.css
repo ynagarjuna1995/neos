@@ -1,0 +1,271 @@
+@charset "UTF-8";
+/*!
+ *
+.||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||.
+
+	.                                      '||            .
+  .||.  .... ... ... ...    ....  ... ...   ||   ....   .||.    ....
+   ||    '|.  |   ||'  || .|...||  ||'  ||  ||  '' .||   ||   .|...||
+   ||     '|.|    ||    | ||       ||    |  ||  .|' ||   ||   ||
+   '|.'    '|     ||...'   '|...'  ||...'  .||. '|..'|'  '|.'  '|...'
+		.. |      ||               ||
+		 ''      ''''             ''''      A Typographic Starter Kit
+
+  URL ........... http://typeplate.com
+  VERSION ....... 1.1.1
+  Github ........ https://github.com/typeplate/typeplate.github.io
+  AUTHORS ....... Dennis Gaebel (@gryghostvisuals) & Zachary Kain (@zakkain)
+  LICENSE ....... Creative Commmons Attribution 3.0
+  LICENSE URL ... http://creativecommons.org/licenses/by/3.0
+
+ .||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||..||.
+ *
+ */
+@font-face { font-family: "Ampersand"; src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua"); unicode-range: U+0026; }
+
+@font-face { font-family: "Ampersand"; src: local("Georgia"); unicode-range: U+270C; }
+
+body { word-wrap: break-word; }
+
+pre code { word-wrap: normal; }
+
+/** Dropcap Sass @include Use the following Sass @include with any selector you feel necessary. 
+	@include dropcap($dropcap-float-position, $dropcap-font-size, $dropcap-font-family, $dropcap-txt-indent, $dropcap-margin, $dropcap-padding, $dropcap-color, $dropcap-line-height, $dropcap-bg);  Extend this object into your custom stylesheet. Let the variables do the work.  */
+html { font: normal 112.5%/1.65 serif; }
+
+body { -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; -o-hyphens: auto; hyphens: auto; color: #444444; }
+
+small { font-size: 65%; }
+
+h1, h2, h3, h4, h5, h6 { text-rendering: optimizeLegibility; line-height: 1; margin-top: 0; }
+
+.tera { font-size: 117px; font-size: 6.5rem; margin-bottom: 0.25385rem; }
+
+.giga { font-size: 90px; font-size: 5rem; margin-bottom: 0.33rem; }
+
+.mega { font-size: 72px; font-size: 4rem; margin-bottom: 0.4125rem; }
+
+.alpha, h1 { font-size: 60px; font-size: 3.33333rem; margin-bottom: 0.495rem; }
+
+.beta, h2 { font-size: 48px; font-size: 2.66667rem; margin-bottom: 0.61875rem; }
+
+.gamma, h3 { font-size: 36px; font-size: 2rem; margin-bottom: 0.825rem; }
+
+.delta, h4 { font-size: 24px; font-size: 1.33333rem; margin-bottom: 1.2375rem; }
+
+.epsilon, h5 { font-size: 21px; font-size: 1.16667rem; margin-bottom: 1.41429rem; }
+
+.zeta, h6 { font-size: 18px; font-size: 1rem; margin-bottom: 1.65rem; }
+
+p { margin: auto auto 1.5em; }
+p + p { text-indent: 1.5em; margin-top: -1.5em; }
+
+abbr, acronym, blockquote, code, dir, kbd, listing, plaintext, q, samp, tt, var, xmp { -webkit-hyphens: none; -moz-hyphens: none; -ms-hyphens: none; -o-hyphens: none; hyphens: none; }
+
+pre code { white-space: -moz-pre-wrap; white-space: pre-wrap; }
+
+pre { white-space: pre; }
+
+code { white-space: pre; font-family: monospace; }
+
+/** Abbreviations Markup 
+	<abbr title="hyper text markup language">HMTL</abbr>  Extend this object into your markup.  */
+abbr { font-variant: small-caps; font-weight: 600; text-transform: lowercase; color: gray; }
+abbr[title]:hover { cursor: help; }
+
+h1, h2, h3, h4, h5, h6 { color: #222222; }
+
+p + .drop-cap { text-indent: 0; margin-top: 0; }
+
+.drop-cap:first-letter { float: left; margin: inherit; padding: inherit; font-size: 4em; font-family: inherit; line-height: 1; text-indent: 0; background: transparent; color: inherit; }
+
+/** Lining Definition Style Markup 
+	<dl class="lining">
+		<dt><b></b></dt>
+		<dd></dd>
+	</dl>  Extend this object into your markup.  */
+.lining dt, .lining dd { display: inline; margin: 0; }
+.lining dt + dt:before, .lining dd + dt:before { content: "\A"; white-space: pre; }
+.lining dd + dd:before { content: ", "; }
+.lining dd:before { content: ": "; margin-left: -0.2rem; }
+
+/** Dictionary Definition Style Markup 
+	<dl class="dictionary-style">
+		<dt><b></b></dt>
+			<dd></dd>
+	</dl>  Extend this object into your markup.  */
+.dictionary-style dt { display: inline; counter-reset: definitions; }
+.dictionary-style dt + dt:before { content: ", "; margin-left: -0.2rem; }
+.dictionary-style dd { display: block; counter-increment: definitions; }
+.dictionary-style dd:before { content: counter(definitions,decimal) ". "; }
+
+/** Blockquote Markup 
+		<figure>
+			<blockquote cite="">
+				<p></p>
+			</blockquote>
+			<figcaption>
+				<cite>
+					<small><a href=""></a></small>
+				</cite>
+			</figcaption>
+		</figure>  Extend this object into your markup.  */
+/** Pull Quotes Markup 
+	<aside class="pull-quote">
+		<blockquote>
+			<p></p>
+		</blockquote>
+	</aside>  Extend this object into your custom stylesheet.  */
+.pull-quote { position: relative; padding: 1em; }
+.pull-quote:before, .pull-quote:after { height: 1em; opacity: 0.5; position: absolute; font-size: 4em; color: #dc976e; }
+.pull-quote:before { content: '“'; top: 0; left: 0; }
+.pull-quote:after { content: '”'; bottom: 0; right: 0; }
+
+/** Figures Markup 
+	<figure>
+		<figcaption>
+			<strong>Fig. 4.2 | </strong>Type Anatomy, an excerpt from Mark Boulton's book<cite title="http://designingfortheweb.co.uk/book/part3/part3_chapter11.php">"Designing for the Web"</cite>
+		</figcaption>
+	</figure>  Extend this object into your markup.  */
+/** Footnote Markup : Replace 'X' with your unique number for each footnote 
+	<article>
+		<p><sup><a href="#fn-itemX" id="fn-returnX"></a></sup></p>
+		<footer>
+			<ol class="foot-notes">
+				<li id="fn-itemX"><a href="#fn-returnX">↩</a></li>
+			</ol>
+		</footer>
+	</article>  Extend this object into your markup.  */
+@font-face { font-family: 'Noto Sans Regular'; src: url("../Fonts/NotoSans-Regular-webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("../Fonts/NotoSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../Fonts/NotoSans-Regular-webfont.woff") format("woff"), url("../Fonts/NotoSans-Regular-webfont.ttf") format("truetype"), url("../Fonts/NotoSans-Regular-webfont.svg#noto_sansregular") format("svg");
+  /* Legacy iOS */
+  font-weight: normal; font-style: normal; }
+
+@font-face { font-family: 'Noto Sans Bold'; src: url("../Fonts/NotoSans-Bold-webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("../Fonts/NotoSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../Fonts/NotoSans-Bold-webfont.woff") format("woff"), url("../Fonts/NotoSans-Bold-webfont.ttf") format("truetype"), url("../Fonts/NotoSans-Bold-webfont.svg#noto_sansregular") format("svg");
+  /* Legacy iOS */
+  font-weight: normal; font-style: normal; }
+
+body { font-family: 'Noto Sans Regular', serif; }
+@media only screen and (max-width: 768px) { body { padding-top: 0px !important; } }
+
+footer .panel { margin-bottom: 0; }
+footer .panel .panel-footer { padding-top: 30px; }
+@media only screen and (max-width: 768px) { footer .panel .panel-body, footer .panel .panel-footer { padding-left: 0; padding-right: 0; } }
+
+h1, h2, h3, h4, h5, h6 { font-family: 'Noto Sans Regular', serif; line-height: 1.1; }
+
+h1 { font-family: 'Noto Sans Bold', serif; letter-spacing: -2.5px; }
+
+a { color: #ff460d; text-decoration: none; -webkit-transition: color, background-color 0.2s; -moz-transition: color, background-color 0.2s; -o-transition: color, background-color 0.2s; transition: color, background-color 0.2s; }
+a:hover { color: #ff460d; }
+
+img { max-width: 100%; height: auto; }
+
+.row { margin-bottom: 2em; }
+
+.main-header { background-color: #ff460d; overflow: hidden; min-height: 375px; padding-top: 115px; padding-bottom: 115px; margin-bottom: 115px; @font font-bold; }
+.main-header, .main-header h1 { color: #fff; }
+.main-header a { color: #fff; text-decoration: underline; }
+.main-header a:hover { text-decoration: none; }
+@media only screen and (max-width: 768px) { .main-header { margin-bottom: 20px; padding-top: 50px; padding-bottom: 50px; min-height: 0; }
+  .main-header h1 { font-size: 1.8rem; } }
+
+.typo3-neos-alignment-right { float: right; margin-left: 2em; margin-bottom: 1em; }
+
+.typo3-neos-alignment-left { float: left; margin-right: 2em; margin-bottom: 1em; }
+
+.carousel { margin-bottom: 1.5em; }
+
+.carousel-indicators { bottom: 0; }
+.carousel-indicators li { width: 16px; height: 16px; margin: 0; border-color: #ccc; background-color: #888; -webkit-transition: box-shadow 0.1s; -moz-transition: box-shadow 0.1s; -o-transition: box-shadow 0.1s; transition: box-shadow 0.1s; -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+.carousel-indicators .active { width: 16px; height: 16px; background-color: #00b5ff; -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5); }
+@media only screen and (max-width: 768px) { .carousel-indicators { display: none; } }
+
+.carousel-control.right, .carousel-control.left { background: none; }
+.neos-backend .carousel-control { display: none; }
+
+@media only screen and (max-width: 768px) { .carousel-caption { font-size: 15px; padding-bottom: 0; } }
+
+.top-navigation-wrap { background-color: white; background-color: rgba(255, 255, 255, 0.97); transition: box-shadow 0.2s linear; min-height: 85px; }
+.top-navigation-wrap.scrolling { -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); }
+@media only screen and (max-width: 768px) { .top-navigation-wrap { position: relative; margin-left: -15px; margin-right: -15px; }
+  .top-navigation-wrap, .top-navigation-wrap.scrolling { -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; } }
+.neos-backend:not(.neos-full-screen) .top-navigation-wrap { top: 82px; }
+@media only screen and (max-width: 768px) { .neos-backend:not(.neos-full-screen) .top-navigation-wrap { top: auto; } }
+.neos-edit-preview-panel-open:not(.neos-full-screen) .top-navigation-wrap { top: 182px; }
+@media only screen and (max-width: 768px) { .neos-edit-preview-panel-open:not(.neos-full-screen) .top-navigation-wrap { top: auto; } }
+.neos-inspector-panel-open:not(.neos-full-screen) .top-navigation-wrap { right: 320px; }
+.neos-menu-panel-open:not(.neos-full-screen) .top-navigation-wrap, .neos-navigate-panel-open:not(.neos-full-screen) .top-navigation-wrap { left: 320px; }
+
+.first-level-navigation { margin-top: 25px; margin-bottom: 0; }
+.first-level-navigation a { font-size: 1.3em; }
+@media only screen and (max-width: 768px) { .first-level-navigation .nav-pills > li { float: none; margin-right: 0px; } }
+
+.second-level-navigation { margin-left: 155px; margin-bottom: 0; min-height: 40px; padding-bottom: 8px; }
+@media only screen and (max-width: 768px) { .second-level-navigation { display: none; } }
+.second-level-navigation .nav-pills > li { margin-right: 30px; }
+.second-level-navigation .nav-pills > li > a { font-size: 12px; line-height: 20px; font-family: 'Noto Sans Regular', serif; }
+.second-level-navigation .nav-pills > li:last-of-type { margin-right: 0; }
+
+.navbar-brand { background-image: url("../Images/logo.png"); background-repeat: no-repeat; background-size: 100px 32px; text-indent: -999px; width: 135px; height: 32px; margin-right: 20px; }
+@media only screen and (max-width: 768px) { .navbar-brand { background-image: url("../Images/logo@2x.png"); background-size: 100px 32px; margin-left: 20px; } }
+
+.navbar-default { background-color: transparent; border: none; }
+.navbar-default .navbar-header { padding-bottom: 18px; }
+.navbar-default .navbar-toggle { background-color: #ff8700; outline: none; margin-top: 0; }
+.navbar-default .navbar-toggle .icon-bar { background-color: white; }
+
+.container .navbar-collapse { max-height: none; padding: 0; margin: 0; }
+
+@media only screen and (max-width: 768px) { .navbar-collapse { border-bottom: 1px solid transparent; } }
+.nav-pills > li { display: block; float: left; width: auto; margin-right: 55px; }
+.nav-pills > li + li { margin-left: 0; }
+.nav-pills > li:last-of-type { margin-right: 0; }
+.nav-pills > li > a { color: #5b5b5b; font-size: 14px; line-height: 46px; font-family: 'Noto Sans Bold', serif; vertical-align: bottom; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; padding: 0; text-decoration: none; }
+.nav-pills > li > a:hover { background-color: transparent; color: #141414; }
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus, .nav-pills > li.current > a, .nav-pills > li.current > a:hover, .nav-pills > li.current > a:focus { color: #ff460d; background-color: transparent; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
+.nav-pills > li li > a { color: #5b5b5b; font-size: 14px; font-family: 'Noto Sans Regular', serif; }
+.nav-pills > li li > a:hover { background-color: transparent; color: #141414; }
+.nav-pills > li li.active > a, .nav-pills > li li.active > a:hover, .nav-pills > li li.active > a:focus, .nav-pills > li li.current > a, .nav-pills > li li.current > a:hover, .nav-pills > li li.current > a:focus { color: #ff460d; background-color: transparent; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
+
+.nav .caret { border-top-color: #323232; border-bottom-color: #323232; }
+.nav .active .caret, .nav .current .caret { border-top-color: white; border-bottom-color: white; }
+
+.nav-tabs { border-bottom: none; }
+.nav-tabs > li { margin-right: 55px; margin-bottom: 5px; }
+.nav-tabs > li > a { padding: 0; text-decoration: none; border: none; }
+.nav-tabs > li > a:hover { background-color: transparent; color: #141414; }
+.nav-tabs > li.current > a { color: #5b5b5b; cursor: default; background-color: transparent; }
+.nav-tabs > li.current > a, .nav-tabs > li.current > a:hover { color: #ff460d; }
+
+footer.navbar { margin-top: 20px; margin-bottom: 0; }
+
+.breadcrumb { padding-left: 0; color: #5b5b5b; background-color: transparent; }
+.breadcrumb li { display: inline; }
+
+.chapter-menu ul { padding-left: 0; }
+.chapter-menu li { margin-bottom: 10px; list-style-type: none; overflow: hidden; *zoom: 1; }
+.chapter-menu li img { margin: 0 15px 10px 0; }
+
+.chapter { padding-top: 20px; background-color: #fafafa; }
+
+.chapter-container { max-width: 640px; font-size: 1.3em; text-align: justify; }
+.chapter-container p:first-of-type:first-letter { float: left; margin: 0 10px 2px 0; padding: inherit; font-size: 4em; font-family: Times; line-height: 1; text-indent: 0; background: transparent; color: #ff460d; }
+.chapter-container p { margin-bottom: 2em; }
+.chapter-container img { max-width: 250px; height: auto; margin: 0 0 0.5em 0.8em; }
+@media only screen and (max-width: 768px) { .chapter-container img { margin-left: auto; margin-right: auto; float: none; display: block; width: 100%; max-width: 100%; } }
+
+.chapter-pager { padding-left: 0; text-align: center; font-size: 0.8em; }
+.chapter-pager li { list-style-type: none; display: inline; }
+
+.form-navigation li { list-style-type: none; }
+
+.responsive-video { position: relative; padding-bottom: 55%; padding-top: 15px; margin-bottom: 1.5em; height: 0; overflow: hidden; }
+.responsive-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.flickr-stream ul { padding-left: 0; }
+.flickr-stream li { list-style-type: none; width: 240px; margin: 0 10px 10px; text-align: center; }
+.flickr-stream img { margin-bottom: 10px; max-height: 190px; max-width: 250px; }
